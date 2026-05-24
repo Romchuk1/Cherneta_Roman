@@ -1,9 +1,12 @@
 <?php
 
-function loadData() {
-    return json_decode(file_get_contents("db.json"), true);
-}
+$host = "localhost";
+$user = "root";
+$password = "";
+$dbname = "notes_db";
 
-function saveData($data) {
-    file_put_contents("db.json", json_encode($data, JSON_PRETTY_PRINT));
+$conn = new mysqli($host, $user, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Connection failed");
 }
