@@ -1,31 +1,49 @@
-import Header from "./components/Header";
-import GameCard from "./components/ProductCard";
-import Footer from "./components/Footer";
+import { useEffect, useState } from 'react';
+import Header from './components/Header';
+import RegisterForm from './components/RegisterForm';
+import UserPreview from './components/UserPreview';
 
 function App() {
+  const [user, setUser] = useState({
+    name: '',
+    email: '',
+    age: ''
+  });
+
+  useEffect(() => {
+    document.title = user.name
+      ? `Користувач: ${user.name}`
+      : 'Форма реєстрації';
+  }, [user.name]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setUser((prev) => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const clearForm = () => {
+    setUser({
+      name: '',
+      email: '',
+      age: ''
+    });
+  };
+
   return (
     <div>
       <Header />
 
-      <GameCard
-        title="CS_2"
-        genre="Action"
-        platform="PC"
+      <RegisterForm
+        user={user}
+        handleChange={handleChange}
+        clearForm={clearForm}
       />
 
-      <GameCard
-        title="Dota2"
-        genre="Action"
-        platform="PC"
-      />
-
-      <GameCard
-        title="FIFA 25"
-        genre="Sports"
-        platform="Xbox"
-      />
-
-      <Footer />
+      <UserPreview user={user} />
     </div>
   );
 }

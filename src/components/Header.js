@@ -1,8 +1,7 @@
 function Header() {
   return (
     <header>
-      <h1>Каталог комп’ютерних ігор</h1>
-      <hr />
+      <h1>Форма реєстрації</h1>
     </header>
   );
 }
