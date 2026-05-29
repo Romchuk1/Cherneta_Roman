@@ -1,7 +1,8 @@
 function Header() {
   return (
     <header>
-      <h1>Форма реєстрації</h1>
+      <h1>Менеджер нотаток</h1>
+      <hr />
     </header>
   );
 }
